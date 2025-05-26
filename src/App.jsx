@@ -18,7 +18,8 @@ function App() {
       setUser(JSON.parse(storedUser))
       navigate('/userlist')
     }
-  }, [])
+  }, [navigate])
+
   const handleLogin = async(e) => {
     e.preventDefault()
     try{
@@ -40,7 +41,7 @@ function App() {
       <form onSubmit={handleLogin}>
         <h2>Login</h2>
         <input type="email" placeholder='Email' value={email} onChange={(e)  => setEmail(e.target.value)} required/>
-        <input type="Senha" placeholder='Password' value={password} onChange={(e)  => setPassword(e.target.value)} required/>
+        <input type="password" placeholder='Password' value={password} onChange={(e)  => setPassword(e.target.value)} required/>
         <button type='submit'>Entrar</button>
       </form>
       <p>{message}</p>
