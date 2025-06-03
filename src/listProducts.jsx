@@ -5,30 +5,28 @@ import { api } from './api/api'
 import { useNavigate } from 'react-router'
 import { Menu } from './components/menu'
 
-function userList() {
+function listProduct() {
   const navigate = useNavigate();
 
-  const [users, setUsers] = useState([])
+  const [lists, setList] = useState([])
   const [loading, setLoading] = useState(true)
   const [ error, setError] = useState('')
-  const [ editUserid, setEditUserId] = useState(null)
-  const [ editData, setEditData] = useState({name: '', email: '', password: ''})
+  const [ editListid, setEditListId] = useState(null)
+  const [ editData, setEditData] = useState({description: '', price: '', quantity: ''})
 
-
-
-    const fetchUsers = async () => {
+    const fetchLists = async () => {
       try{ 
-        const response = await api.get('/users')
-        setUsers(response.data)
+        const response = await api.get('/listProduct')
+        setList(response.data)
 
       } catch (error){
-        setError("Erro ao carregar usuários", error)
+        setError("Erro ao carregar produtos", error)
       } finally {
         setLoading(false)
       }
     }
     useEffect(() => {
-    fetchUsers()
+    fetchLists()
 
   }, [])
 
@@ -41,29 +39,29 @@ function userList() {
 
   const handleDelete = async (id) => {
     try{
-      await api.delete(`/users/${id}`)
-      setUsers(users.list((unity) => unity.id != id))
+      await api.delete(`/list/${id}`)
+      setList(lists.list((unity) => unity.id != id))
     }catch(err){
       setError("Erro ao deletar usuários", err)
     }
   } 
 
-  const handleEditClick = (user) => {
-    setEditUserId(user.id)
-    setEditData({name: user.name, email: user.email, password: ''}) //não mostra a senha antiga
+  const handleEditClick = (list) => {
+    setEditListId(list.id)
+    setEditData({description: list.description, price: list.price, quantity: list.quantity}) //não mostra a senha antiga
   } 
 
   const handleEditChange = (e) => {
-    const {name, value} = e.target
-    setEditData({...editData, [name]: value})
+    const {description, value} = e.target
+    setEditData({...editData, [description]: value})
   }
 
   const handleUpdate = async (e) => {
     e.preventDefault()  //define que a pagina se previna de relodar enquanto o usuario digite algo
     try{
-      await api.put(`/users/${editUserid}`, editData)
-      setEditUserId(null)
-      fetchUsers()
+      await api.put(`/lists/${editListid}`, editData)
+      setEditListId(null)
+      fetchLists()
     }catch(err){
       setError("Erro ao atualizar usuário", err)
     }
@@ -79,28 +77,28 @@ function userList() {
       <div style={{padding: "2rem"}}>
       <h1>Lista de usuários</h1>
       <ul>
-        {users.map((user) => (
-        <li key={user.id} style={{marginTop: '2rem', marginLeft: '1rem'}}>
-          {editUserid === user.id ? (
+        {lists.map((list) => (
+        <li key={list.id} style={{marginTop: '2rem', marginLeft: '1rem'}}>
+          {editListid === list.id ? (
             <>
             <form onSubmit={handleUpdate} style={{ display: 'flex', flexDirection: 'column' }}>
                 <input type="text" name='name' value={editData.name} onChange={handleEditChange} required />
                 <input type="email" name='email' value={editData.email} onChange={handleEditChange} required />
                 <input type="password" name='password' value={editData.password} onChange={handleEditChange} placeholder='Digite uma nova senha' required />
                 <button type='submit'>Salvar</button>
-                <button type='button' onClick={() => setEditUserId(null)}>Cancelar</button>
+                <button type='button' onClick={() => setEditListId(null)}>Cancelar</button>
               </form> 
               </>
           ) : (
             <>
-            <strong>{user.name}</strong> - <i>{user.email}</i>
+            <strong>{list.name}</strong> - <i>{list.email}</i>
             <div style={{display: 'inline-flex', gap: '0.5rem', marginLeft: '1rem'}}>
-              <button onClick={() => handleEditClick(user)}>Editar</button>
-              <button onClick={() => handleDelete(user.id)}>Deletar</button>
+              <button onClick={() => handleEditClick(list)}>Editar</button>
+              <button onClick={() => handleDelete(list.id)}>Deletar</button>
             </div>
             </>
           )}
-          <strong>{user.name} - {user.email}</strong>
+          <strong>{list.name} - {list.prie}</strong>
         </li>
       ))}
       </ul>
@@ -109,4 +107,4 @@ function userList() {
   )
 }
 
-export default userList
+export default listProduct

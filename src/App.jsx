@@ -10,6 +10,7 @@ function App() {
   const [password, setPassword] = useState('')
   const [user, setUser] = useState(null)
   const [message, setMessage] = useState('')
+  const [showPassword, setShowPassword] = useState(false)
 
   useEffect(() => {
     const storedUser = localStorage.getItem('user')
@@ -40,17 +41,32 @@ function App() {
       <div className={style.wrapImg}>
         <div className={style.degrade}></div>
       </div>
+
       <div className={style.wrapForm}>
         <form onSubmit={handleLogin}>
-          <h2>Login</h2>
-          <input type="email" placeholder='Email' value={email} onChange={(e) => setEmail(e.target.value)} required />
-          <input type="password" placeholder='Senha' value={password} onChange={(e) => setPassword(e.target.value)} required />
+
+          <div>
+            <img src="" alt="" />
+            <h2>Login</h2>
+          </div>
+
+          <div>
+            <img src="" alt="" />
+            <div>
+              <input type="email" placeholder='Email' value={email} onChange={(e) => setEmail(e.target.value)} required />
+            </div>
+            <div>
+              <img src="" alt="" />
+              <input type={showPassword? 'text' : 'password'} placeholder='Senha' value={password} onChange={(e) => setPassword(e.target.value)} required />
+              <img src="" alt="" />
+              <p onClick={() => setShowPassword(prev => !prev)}></p>
+            </div>
+          </div>
           <button type='submit'>Entrar</button>
-          <p className={style.userCad}>Cadastrar usuário</p>
+          <p className={style.userCad}>Entre em contato</p>
           <p>{message}</p>
         </form>
       </div>
-
     </div>
   )
 }

@@ -9,7 +9,7 @@
 .wrapImg {
     width: 50%;
     height: 100vh;
-    background-image: url('./assets/bg-2.jpeg');
+    background-image: url('./assets/wallpaperbg.webp');
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -136,7 +136,7 @@
         display: none;
     }
     .wrapLogin {
-        background-image: url('./assets/bg-2.jpeg');
+        background-image: url('./assets/wallpaperbg.webp');
         background-position: center;
         background-size: cover;
         background-repeat: no-repeat;

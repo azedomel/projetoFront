@@ -5,7 +5,7 @@ import { BrowserRouter, Route, Routes } from 'react-router';
 import './index.css'
 import App from './App'
 import UsersList from './usersList';
-import List from './list';
+import ListProduct from './listProduct';
 import Dashboard from './dashboard';
 
 createRoot(document.getElementById('root')).render(
@@ -15,7 +15,7 @@ createRoot(document.getElementById('root')).render(
         <Route path='/' element={<App/>}/>
         <Route path='/dashboard' element={<Dashboard/>}/>
         <Route path='/usersList' element={<UsersList/>}/>
-        <Route path='/list' element={<List/>}/>
+        <Route path='/listProduct' element={<ListProduct/>}/>
       </Routes>
     </BrowserRouter>
   </StrictMode>,
