@@ -38,14 +38,17 @@ function Dashboard() {
             <div className={styles.wrapItem} onClick={() => navigate('/#')}>
                 <p>Criar Produto</p>
                 </div>
-            <div className={styles.wrapItem} onClick={() => navigate('/#')}>
+            <div className={styles.wrapItem} onClick={() => navigate('/listProduct')}>
                 <p>Lista de produtos - ({productCount} produtos)</p>
                 </div>
             <div className={styles.wrapItem} onClick={() => navigate('/#')}>
                 <p>Criar usuário</p>
                 </div>
-            <div className={styles.wrapItem} onClick={() => navigate('/#')}>
+            <div className={styles.wrapItem} onClick={() => navigate('/userList')}>
                 <p>Lista de usuários - ({userCount} usuários)</p>
+                </div>
+            <div className={styles.wrapItem} onClick={() => navigate('/contact')}>
+                <p>Entre em contato</p>
                 </div>
 
         </div>

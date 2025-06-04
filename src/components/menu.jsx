@@ -10,6 +10,9 @@ export const Menu = () => {
 
     const goToDashboard = () => navigate('/dashboard')
     const goToUsers = () => navigate('/usersList')
+    const goToContact = () => navigate('/contact')
+    const goToProduct = () => navigate('/listProduct')
+
 
     const logOut = () => {
         localStorage.removeItem('user')
@@ -23,7 +26,8 @@ export const Menu = () => {
         <p >Criar usuário</p>
         <p onClick={goToUsers}>Lista de usuário</p>
         <p>Criar produto</p>
-        <p>Lista de produto</p>
+        <p onClick={goToProduct}>Lista de produto</p>
+        <p onClick={goToContact}>Entre em contato</p>
         <p onClick={logOut}>Sair</p>
     </nav>
  )

@@ -100,7 +100,7 @@ function userList() {
             </div>
             </>
           )}
-          <strong>{user.name} - {user.email}</strong>
+          
         </li>
       ))}
       </ul>

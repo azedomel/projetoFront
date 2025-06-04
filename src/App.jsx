@@ -3,6 +3,11 @@ import { api } from './api/api'
 import { useNavigate } from 'react-router'
 import { useState, useEffect } from 'react';
 
+
+// import Icon from './assets/icons8-circled-right.gif'
+// import IconLogin from './assets/icons8-crachá.gif'
+// import Eye from './assets/icons8-visível.gif'
+
 function App() {
   const navigate = useNavigate();
 
@@ -11,6 +16,8 @@ function App() {
   const [user, setUser] = useState(null)
   const [message, setMessage] = useState('')
   const [showPassword, setShowPassword] = useState(false)
+
+  const goToContact = () => navigate('/contact')
 
   useEffect(() => {
     const storedUser = localStorage.getItem('user')
@@ -38,36 +45,31 @@ function App() {
   return (
     <div className={style.wrapLogin}>
 
-      <div className={style.wrapImg}>
-        <div className={style.degrade}></div>
-      </div>
-
-      <div className={style.wrapForm}>
-        <form onSubmit={handleLogin}>
-
-          <div>
-            <img src="" alt="" />
-            <h2>Login</h2>
-          </div>
-
-          <div>
-            <img src="" alt="" />
-            <div>
-              <input type="email" placeholder='Email' value={email} onChange={(e) => setEmail(e.target.value)} required />
-            </div>
-            <div>
-              <img src="" alt="" />
-              <input type={showPassword? 'text' : 'password'} placeholder='Senha' value={password} onChange={(e) => setPassword(e.target.value)} required />
-              <img src="" alt="" />
-              <p onClick={() => setShowPassword(prev => !prev)}></p>
-            </div>
-          </div>
-          <button type='submit'>Entrar</button>
-          <p className={style.userCad}>Entre em contato</p>
-          <p>{message}</p>
-        </form>
-      </div>
+    <div className={style.wrapImg}>
+      <div className={style.degrade}></div>
     </div>
+    <div className={style.wrapForm}>
+      <form onSubmit={handleLogin}>
+        <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center'}}>
+        {/* <img className={style.iconLogin} src={IconLogin} alt="Icone arrow" /> */}
+        <h2>Login</h2>
+        </div>
+        <div style={{position: "relative", width: "100%"}}>
+          {/* <img className={style.icon} src={Icon} alt="Icone arrow" /> */}
+          <input type="email" placeholder='Email' value={email} onChange={(e) => setEmail(e.target.value)} required />
+        </div>
+        <div style={{position: "relative", width: "100%"}}>
+          {/* <img className={style.icon} src={Icon} alt="Icone arrow" /> */}
+          <input type={showPassword ? 'text' : 'password'} placeholder='Senha' value={password} onChange={(e) => setPassword(e.target.value)} required />
+          {/* <img onClick={() => setShowPassword(prev => !prev)} style={{position: "absolute", width: '20px', borderRadius: '100%', right: '10px', top: '10px', cursor: 'pointer'}} src={Eye} alt="Olho da senha" /> */}
+        </div>
+        <button type='submit'>Entrar</button>
+        <p onClick={ goToContact} className={style.userCad}>Entre em contato</p>
+        <p>{message}</p>
+      </form>
+    </div>
+
+  </div>
   )
 }
 

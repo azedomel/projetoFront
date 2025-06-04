@@ -13,12 +13,12 @@
     height: 150px;
     padding: 20px;
     border-radius: 20px;
-    border: 6px solid transparent;
+    border: 2px solid transparent;
     transition: all 200ms ease-in-out;
 }
 
 .wrapItem:hover{
-    box-shadow: 6px 10px 31px 0px rgba(59,53,53,0.75);
+    box-shadow: rgba(82, 18, 134, 0.25) 0px 54px 55px, rgba(77, 19, 110, 0.12) 0px -12px 30px, rgba(72, 15, 99, 0.12) 0px 4px 6px, rgba(74, 25, 111, 0.17) 0px 12px 13px, rgba(86, 25, 144, 0.09) 0px -3px 5px;
     opacity: 1;
     transform: scale(1.02);
     cursor: pointer;
